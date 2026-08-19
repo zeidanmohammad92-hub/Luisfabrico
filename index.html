@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luis Alves - Contact</title>
+<style>
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;background:#f4f6f8}
+.card{width:min(90%,420px);box-sizing:border-box;background:white;padding:32px;border-radius:20px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.1)}
+h1{margin-bottom:8px}.position{color:#555;margin-bottom:24px}.info{text-align:left;line-height:1.8;margin-bottom:24px}
+.button{display:block;width:100%;box-sizing:border-box;padding:14px;margin-top:12px;border-radius:12px;text-decoration:none;border:0;font-size:16px;cursor:pointer;background:#111;color:white}
+.button.secondary{background:#e9ecef;color:#111}
+</style>
+</head>
+<body>
+<main class="card">
+<h1>Luis Alves</h1>
+<div class="position">CEO</div>
+<div><strong>Company:</strong> fabrico</div>
+<div class="info">
+<div><strong>Phone:</strong> +233 55 146 8687</div>
+<div><strong>Email:</strong> Luis.alves@fabricobuilders.com</div>
+</div>
+<a class="button" href="tel:+233551468687">Call +233 55 146 8687</a>
+<button class="button secondary" onclick="saveContact()">Save Contact</button>
+<a class="button" href="https://fabricobuilders.com/" target="_blank" rel="noopener noreferrer">Enter fabrico Website</a>
+</main>
+<script>
+function saveContact(){
+const vcard=`BEGIN:VCARD
+VERSION:3.0
+FN:Luis Alves
+N:Zeidan;Mohammed;;;
+TEL;TYPE=CELL:+233551468687
+EMAIL:Luis.alves@fabricobuilders.com
+TITLE:CEO
+ORG:fabrico
+END:VCARD`;
+const blob=new Blob([vcard],{type:"text/vcard;charset=utf-8"});
+const url=URL.createObjectURL(blob);
+const link=document.createElement("a");
+link.href=url; link.download="Luis_Alves.vcf";
+document.body.appendChild(link); link.click(); link.remove();
+URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
